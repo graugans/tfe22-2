@@ -2,6 +2,7 @@
 #include <fmt/format.h>
 #include <random>  // Für Zufallszahlen
 #include <vector>
+#include <algorithm>  // Für std::sort
 
 #include "CLI/CLI.hpp"
 #include "config.h.in"
@@ -47,7 +48,10 @@ auto main(int argc, char **argv) -> int
     fmt::print("Hello, {}!\n", app.get_name());
     fmt::print("count: {}\n", count);
 
-    // Rufen Sie die Funktion zur Ausgabe des Vektors auf
+    // Sortieren Sie den Vektor in aufsteigender Reihenfolge
+    std::sort(random_values.begin(), random_values.end());
+
+    // Rufen Sie die Funktion zur Ausgabe des sortierten Vektors auf
     printVector(random_values);
 
     return 0; /* graceful exit */
