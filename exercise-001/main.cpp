@@ -5,8 +5,8 @@
 #include "config.h"
 #include <vector>
 #include <random>
-#include <algorithm>  // Für std::sort
-#include <iostream>   // Für die Ausgabe
+#include <algorithm>
+#include <chrono>  // Hinzufügen der <chrono>-Bibliothek für die Zeitmessung
 
 auto main(int argc, char **argv) -> int
 {
@@ -27,7 +27,6 @@ auto main(int argc, char **argv) -> int
     fmt::print("Hello, {}!\n", app.get_name());
     fmt::print("count: {}\n", count);
 
-    // Erstellen Sie einen std::vector und füllen ihn mit zufälligen Werten
     std::vector<int> randomValues;
     std::random_device rd;
     std::mt19937 gen(rd());
@@ -43,8 +42,18 @@ auto main(int argc, char **argv) -> int
     }
     fmt::print("\n");
 
-    // Sortieren Sie den Vector aufsteigend
+    // Zeitmessung starten
+    auto start = std::chrono::system_clock::now();
+
+    // Sortieren des Vektors
     std::sort(randomValues.begin(), randomValues.end());
+
+    // Zeitmessung beenden
+    auto end = std::chrono::system_clock::now();
+
+    // Dauer der Sortierung berechnen und in Mikrosekunden ausgeben
+    auto elapsed = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+    fmt::print("Sortierungsdauer: {} Mikrosekunden\n", elapsed.count());
 
     fmt::print("Sortierte Werte: ");
     for (int value : randomValues) {
@@ -54,3 +63,4 @@ auto main(int argc, char **argv) -> int
 
     return 0;
 }
+
