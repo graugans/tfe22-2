@@ -10,11 +10,11 @@ auto main(int argc, char **argv) -> int
      * CLI11 is a command line parser to add command line options
      * More info at https://github.com/CLIUtils/CLI11#usage
      */
+    int count = 20;
     CLI::App app{PROJECT_NAME};
     try
     {
         app.set_version_flag("-V,--version", fmt::format("{} {}", PROJECT_VER, PROJECT_BUILD_DATE));
-        int count = 20;
         app.add_option("-c,--count", count, "A count integer");
         app.parse(argc, argv);
     }
