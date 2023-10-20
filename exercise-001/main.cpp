@@ -32,6 +32,8 @@ auto main(int argc, char **argv) -> int
     std::mt19937 gen(rd());
     std::uniform_int_distribution<> dis(1, 100);
     std::generate_n(vec.begin(), count, [&dis, &gen]() { return dis(gen); });
+    fmt::print("Random numbers: {}\n", fmt::join(vec, ", "));
+    
     return 0; /* exit gracefully*/
 }
 
