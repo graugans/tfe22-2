@@ -49,11 +49,11 @@ auto main(int argc, char **argv) -> int
     fmt::print("Zufällig:\n");
     print_vector(Zufallsvektor);
 
-    auto start = std::chrono::system_clock::now();
+    const auto start = std::chrono::system_clock::now();
     std::sort(Zufallsvektor.begin(), Zufallsvektor.end());
-    auto end = std::chrono::system_clock::now();
+    const auto end = std::chrono::system_clock::now();
 
-    auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
+    const auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
 
     fmt::print("\nSortiert in {} Nanosekunden:\n", elapsed);
     print_vector(Zufallsvektor);
