@@ -3,6 +3,7 @@
 
 #include "CLI/CLI.hpp"
 #include "config.h"
+#include <random>
 
 auto main(int argc, char **argv) -> int
 {
@@ -35,6 +36,21 @@ auto main(int argc, char **argv) -> int
     fmt::print("Count: {}\n", count);
 
     /* INSERT YOUR CODE HERE */
+    std::vector<int> randomVector;
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> dis(1, 100);
+    
+    for (int i = 0; i < count; ++i) {
+        randomVector.push_back(dis(gen));
+    }
 
+    // Ausgabe der Werte im Vektor
+    fmt::print("Random Vector: ");
+    for (const auto &element : randomVector) {
+        fmt::print("{} ", element);
+    }
+    fmt::print("\n");
+    
     return 0; /* exit gracefully*/
 }
