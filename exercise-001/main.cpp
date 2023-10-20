@@ -48,8 +48,10 @@ auto main(int argc, char **argv) -> int
         fmt::print("Value: {}\n", value);
     }
 
-    //fmt::print("Sortiert:\n");
-    //std::sort(Zufallsvektor.)
-
+    std::sort(Zufallsvektor.begin(), Zufallsvektor.end());
+    fmt::print("\nSortiert:\n");
+    for(auto value : Zufallsvektor) {
+        fmt::print("Value: {}\n", value);
+    }
     return 0; /* exit gracefully*/
 }
