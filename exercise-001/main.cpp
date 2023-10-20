@@ -4,6 +4,8 @@
 #include "CLI/CLI.hpp"
 #include "config.h"
 
+int count = 42;
+
 auto main(int argc, char **argv) -> int
 {
     /**
@@ -14,7 +16,9 @@ auto main(int argc, char **argv) -> int
     try
     {
         app.set_version_flag("-V,--version", fmt::format("{} {}", PROJECT_VER, PROJECT_BUILD_DATE));
+        app.add_option("-c, --count", count);
         app.parse(argc, argv);
+        
     }
     catch (const CLI::ParseError &e)
     {
@@ -26,9 +30,9 @@ auto main(int argc, char **argv) -> int
      * it is much more convenient than std::cout and printf
      * More info at https://fmt.dev/latest/api.html
      */
-    fmt::print("Hello, {}!\n", app.get_name());
 
-    /* INSERT YOUR CODE HERE */
+    fmt::print("Hello, {}!\n", app.get_name());
+    std::cout << "Count: " << count << "\n";
 
     return 0; /* exit gracefully*/
 }
