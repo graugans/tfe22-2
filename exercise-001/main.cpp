@@ -14,6 +14,8 @@ auto main(int argc, char **argv) -> int
     try
     {
         app.set_version_flag("-V,--version", fmt::format("{} {}", PROJECT_VER, PROJECT_BUILD_DATE));
+        int count = 20;
+        app.add_option("-c,--count", count, "A count Integer");       
         app.parse(argc, argv);
     }
     catch (const CLI::ParseError &e)
@@ -22,8 +24,7 @@ auto main(int argc, char **argv) -> int
     }
 
 
-    int count = 20;
-    app.add_option("-c,--count", count, "A count Integer");git 
+    
     /**
      * The {fmt} lib is a cross platform library for printing and formatting text
      * it is much more convenient than std::cout and printf
