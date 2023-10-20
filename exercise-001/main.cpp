@@ -8,6 +8,15 @@
 #include <random>   // Header-Datei für die Zufallsgenerierung
 
 
+// Funktion zur Ausgabe des Vektors mit zufälligen Zahlen
+void printRandomNumbers(const std::vector<int>& numbers) {
+    fmt::print("Zufällige Zahlen: ");
+    for (int num : numbers) {
+        fmt::print("{} ", num);
+    }
+    fmt::print("\n");
+}
+
 
 auto main(int argc, char **argv) -> int
 {
@@ -53,11 +62,7 @@ auto main(int argc, char **argv) -> int
     }
 
     // Anzeigen der zufälligen Zahlen
-    fmt::print("Zufällige Zahlen: ");
-    for (int num : randomNumbers) {
-        fmt::print("{} ", num);
-    }
-    fmt::print("\n");
+    printRandomNumbers(randomNumbers);
 
 
     return 0; 
