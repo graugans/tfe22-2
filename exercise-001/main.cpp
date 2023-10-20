@@ -4,6 +4,9 @@
 #include "CLI/CLI.hpp"
 #include "config.h"
 
+#include <vector>
+#include <time.h>
+
 auto main(int argc, char **argv) -> int
 {
     /**
@@ -11,6 +14,7 @@ auto main(int argc, char **argv) -> int
      * More info at https://github.com/CLIUtils/CLI11#usage
      */
     int count = 20;
+    srand(time(NULL));
 
     CLI::App app{PROJECT_NAME};
     try
@@ -29,10 +33,23 @@ auto main(int argc, char **argv) -> int
      * it is much more convenient than std::cout and printf
      * More info at https://fmt.dev/latest/api.html
      */
-    fmt::print("Hello, {}!\n", app.get_name());
+    //fmt::print("Hello, {}!\n", app.get_name());
 
     /* INSERT YOUR CODE HERE */
-    fmt::print("Count: {}\n", count);
+
+    std::vector<int> Zufallsvektor(count);
+
+    for (int i = 0; i < count; i++) {
+        Zufallsvektor.at(i) = (rand() % 100) + 1;
+    }
+
+    fmt::print("Zufällig:\n");
+    for(auto value : Zufallsvektor) {
+        fmt::print("Value: {}\n", value);
+    }
+
+    //fmt::print("Sortiert:\n");
+    //std::sort(Zufallsvektor.)
 
     return 0; /* exit gracefully*/
 }
