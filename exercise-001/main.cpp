@@ -4,6 +4,19 @@
 #include "CLI/CLI.hpp"
 #include "config.h"
 
+
+#include <iostream>
+#include <vector>
+#include <random>
+
+using std::cout;
+using std::endl;
+
+constexpr int MIN = 1;
+constexpr int MAX = 100;
+
+
+
 auto main(int argc, char **argv) -> int
 {
     /**
@@ -32,7 +45,38 @@ auto main(int argc, char **argv) -> int
     fmt::print("Hello, {}!\n", app.get_name());
     fmt::print("Count: {}!\n", count);
 
-    std::vector
+
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    
+    
+
+
+    //std::for_each(data.begin(), data.end(), [&distrib, &gen](auto))
+    //fmd::print("vector: \n[{}]\n", fmt::join(data,", "));
+
+    // Create a distribution for random numbers, for example, from 1 to 100
+    std::uniform_int_distribution<int> distrib(1, 100);
+
+    // Create a vector to store random numbers
+    std::vector<int> data;
+
+    // Specify the number of random numbers you want in the vector
+    const int numRandomNumbers = 10;
+
+    for (int i = 0; i < numRandomNumbers; ++i) {
+        // Generate a random number and add it to the vector
+        int randomNumber = distrib(gen);
+        data.push_back(randomNumber);
+    }
+
+    // Print the generated random numbers
+    for (int number : data) {
+        std::cout << number << " ";
+    }
+    
+
+
 
     
    /*
