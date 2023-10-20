@@ -4,6 +4,8 @@
 #include "CLI/CLI.hpp"
 #include "config.h"
 
+auto start = std::chrono::system_clock::now();
+
 int count = 20;
 
 auto main(int argc, char **argv) -> int
@@ -44,6 +46,21 @@ auto main(int argc, char **argv) -> int
         std::cout << marius[x] << std::endl;
     }
 
+    //auto start = std::chrono::system_clock::now();
+
+    std::sort(marius.begin(), marius.end());
+    std::cout << "Vektor sortiert:"<< std::endl;
+
+    for(int x=0;x<marius.size(); x++){
+
+        fmt::print("{}\n",marius[x]);
+    }
+
+    auto end = std::chrono::system_clock::now();
+    auto Dauer =
+            std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+
+    fmt::print("Zeit der Berechnung: {}\n", Dauer);
 
     /* INSERT YOUR CODE HERE */
 
