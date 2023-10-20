@@ -6,6 +6,7 @@
 
 #include <vector>
 #include <time.h>
+#include <chrono>
 
 auto print_vector(std::vector<int>) -> void;
 
@@ -48,8 +49,13 @@ auto main(int argc, char **argv) -> int
     fmt::print("Zufällig:\n");
     print_vector(Zufallsvektor);
 
+    auto start = std::chrono::system_clock::now();
     std::sort(Zufallsvektor.begin(), Zufallsvektor.end());
-    fmt::print("\nSortiert:\n");
+    auto end = std::chrono::system_clock::now();
+
+    auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
+
+    fmt::print("\nSortiert in {} Nanosekunden:\n", elapsed);
     print_vector(Zufallsvektor);
 
     return 0; /* exit gracefully*/
