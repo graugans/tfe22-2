@@ -3,6 +3,7 @@
 
 #include "CLI/CLI.hpp"
 #include "config.h"
+#include<cstdlib>
 
 int count = 42;
 
@@ -18,6 +19,20 @@ auto main(int argc, char **argv) -> int
         app.set_version_flag("-V,--version", fmt::format("{} {}", PROJECT_VER, PROJECT_BUILD_DATE));
         app.add_option("-c, --count", count);
         app.parse(argc, argv);
+
+        srand((unsigned) time(NULL));
+
+        std::vector<int> random_numbers;
+
+        for (int i = 0; i < count; i++)
+        {
+            int random = 1 + (rand() % 100);
+            random_numbers.push_back(random);
+            std::cout << "Random Number:" << random << "\n";
+        }
+
+        
+        
         
     }
     catch (const CLI::ParseError &e)
