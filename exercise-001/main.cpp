@@ -43,7 +43,7 @@ std::vector <int> vector;
     }
 
 
-    std::sort(vector.rbegin(), vector.rend());
+    std::sort(vector.begin(), vector.end());
 
     for (int m = 0; m < vector.size(); m++)
     {
