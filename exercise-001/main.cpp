@@ -4,6 +4,10 @@
 #include "CLI/CLI.hpp"
 #include "config.h"
 
+#include <vector>   // Header-Datei für std::vector
+#include <random>   // Header-Datei für die Zufallsgenerierung
+
+
 
 auto main(int argc, char **argv) -> int
 {
@@ -13,7 +17,7 @@ auto main(int argc, char **argv) -> int
      */
     CLI::App app{PROJECT_NAME};
 
-    int count = 20; //hinzugefügt
+    int count = 20;
 
     app.add_option("-c,--count", count, "Anzahl der Elemente");
 
@@ -38,7 +42,23 @@ auto main(int argc, char **argv) -> int
 
     fmt::print("Count: {}\n", count);
 
-    /* INSERT YOUR CODE HERE */
+    // Erstellen eines std::vector mit der Größe von "count" und gefüllt mit zufälligen Werten von 1 bis 100
+    std::vector<int> randomNumbers;
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<int> dis(1, 100);
 
-    return 0; /* exit gracefully*/
+    for (int i = 0; i < count; ++i) {
+        randomNumbers.push_back(dis(gen));
+    }
+
+    // Anzeigen der zufälligen Zahlen
+    fmt::print("Zufällige Zahlen: ");
+    for (int num : randomNumbers) {
+        fmt::print("{} ", num);
+    }
+    fmt::print("\n");
+
+
+    return 0; 
 }
