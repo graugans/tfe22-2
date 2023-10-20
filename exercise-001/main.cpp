@@ -6,6 +6,8 @@
 #include <vector>
 #include <cstdlib>
 #include <ctime>
+#include <algorithm>
+
  void print_vector(std::vector<int> &zufallszahlen)
 {
     for(int zahl : zufallszahlen)
@@ -56,9 +58,11 @@ for(int i=0; i<count; i++)
 }
 
 print_vector(zufallszahlen);
+std::sort(zufallszahlen.begin(), zufallszahlen.end());
+fmt::print("\n");
+print_vector(zufallszahlen);
 
-    return 0; /* exit gracefully*/
-
+return 0; /* exit gracefully*/
 }
 
 
