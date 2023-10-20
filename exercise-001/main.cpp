@@ -51,14 +51,22 @@ auto main(int argc, char **argv) -> int
 
     print_vector(random_vector);
 
-    std::sort(random_vector.begin(), random_vector.end());
+    auto start = std::chrono::system_clock::now();      //store time value at start
+
+    std::sort(random_vector.begin(), random_vector.end());          //Sortieren des Vectors
+
+    auto end = std::chrono::system_clock::now();        //store time value at end
+
+    auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
 
     print_vector(random_vector);
+
+    fmt::print("Time in nanoseconds: {}", elapsed);
 
     return 0; /* exit gracefully*/
 }
 
-
+//Function for printing vector
 void print_vector(const std::vector<int>& vec) {
     for(const int& val : vec) {
         fmt::print("{} ", val);
