@@ -1,14 +1,14 @@
 #include <fmt/chrono.h>
 #include <fmt/format.h>
 
-
-
+#include <time.h>  
+#include <vector>
 #include "CLI/CLI.hpp"
 #include "config.h"
 
 auto main(int argc, char **argv) -> int
 {
-
+    srand (time(NULL));
     int count=20;
     /**
      * CLI11 is a command line parser to add command line options
@@ -30,8 +30,21 @@ auto main(int argc, char **argv) -> int
      * it is much more convenient than std::cout and printf
      * More info at https://fmt.dev/latest/api.html
      */
+
+    std::vector<int> zufall_vector(count);
+    for(int i=0; i< count;i++)
+    {
+        zufall_vector.at(i) = rand() % 100 +1;
+        //zufall_vector.push_back(rand()%100 +1);
+    }
+    for(auto value: zufall_vector)
+    {
+        fmt::print("Vectorvalue: {}\n",value);
+    }
+
+
+
     fmt::print("Hello, {}!\n", app.get_name());
-    fmt::print("count: {}\n",count);
 
     /* INSERT YOUR CODE HERE */
 
