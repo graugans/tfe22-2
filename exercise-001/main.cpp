@@ -5,7 +5,13 @@
 #include "config.h"
 #include <random>
 
-
+void printVector(const std::vector<int>& Zufall) {
+    fmt::print("Vektorinhalt: ");
+    for(const auto &value : Zufall)
+     {
+        fmt::print("{}\n", value);
+    }
+}
 
 auto main(int argc, char **argv) -> int
 {
@@ -16,15 +22,17 @@ auto main(int argc, char **argv) -> int
     
     CLI::App app{PROJECT_NAME};
     int  count = 20;
-
+    std::random_device rd;
     std::vector<int> Zufall(count);
 
-    std::default_random_engine generator;
+    std::mt19937 generator(rd());
     std::uniform_int_distribution<int> Zufallszahl(1,100);
 
     for (std::vector<int>::size_type i = 0; i != Zufall.size(); ++i)
     {
+        std::uniform_int_distribution<int> Zufallszahl(1,100);
         Zufall[i] = Zufallszahl(generator);
+       
     }
 
     try
@@ -50,6 +58,7 @@ auto main(int argc, char **argv) -> int
 
     CLI11_PARSE(app, argc, argv);
     fmt::print("Parameter, {}\n", count);
-
+    //for(auto value: Zufall){}
+    printVector(Zufall);
     return 0; /* exit gracefully*/
 }
