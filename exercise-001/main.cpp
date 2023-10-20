@@ -4,6 +4,8 @@
 #include "CLI/CLI.hpp"
 #include "config.h"
 
+#include "algorithm"
+
 void print_vector(const std::vector<int>& vec);
 
 auto main(int argc, char **argv) -> int
@@ -47,6 +49,10 @@ auto main(int argc, char **argv) -> int
     {
         val = rand() % 100 + 1;
     }
+
+    print_vector(random_vector);
+
+    std::sort(random_vector.begin(), random_vector.end());
 
     print_vector(random_vector);
 
