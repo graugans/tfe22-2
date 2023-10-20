@@ -5,7 +5,7 @@
 #include "config.h"
 #include <random>
 
-void printVector(const std::vector<int>& Zufall) {
+auto printVector(const std::vector<int>& Zufall) {
     fmt::print("Vektorinhalt: ");
     for(const auto &value : Zufall)
      {
@@ -62,12 +62,18 @@ auto main(int argc, char **argv) -> int
     //for(auto value: Zufall){}
     printVector(Zufall);
 
+    
     fmt::print("Sortierter Inhalt: ");
+    
+    auto start = std::chrono::system_clock::now();
     std::sort(Zufall.begin(), Zufall.end());
+    auto end = std::chrono::system_clock::now();
+    auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
+    
     for(const auto &value : Zufall)
      {
         fmt::print("{}\n", value);
     }
-
+    fmt::print("Zeit benötigt:{}\n", elapsed);
     return 0; /* exit gracefully*/
 }
