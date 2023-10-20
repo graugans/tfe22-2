@@ -5,6 +5,8 @@
 #include "config.h"
 
 
+auto start = std::chrono::system_clock::now();
+
 int count = 20;
 
 auto main(int argc, char **argv) -> int
@@ -49,12 +51,16 @@ std::vector <int> vector;
     {
         std::cout << vector[m] << std::endl;
     }
+
+
+auto end = std::chrono::system_clock::now();
+
+auto elapsed =
+    std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
+
+    fmt::print("Dauer: {}\n", elapsed);
     
 
- 
-    
-
-    /* INSERT YOUR CODE HERE */
 
     return 0; /* exit gracefully*/
 }
