@@ -32,7 +32,14 @@ auto main(int argc, char **argv) -> int
      */
     fmt::print("Hello, {}!\n", app.get_name());
 
-    fmt::print("{}\n", count);
+    fmt::print("count: {}\n", count);
+
+    std::vector<int> vector;
+
+    for (int i = 0; i < count; i++)
+    {
+        vector.push_back(1 + std::rand() % 100);
+    }
 
     return 0; /* exit gracefully*/
 }
