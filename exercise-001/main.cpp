@@ -2,6 +2,7 @@
 #include <fmt/format.h>
 #include <vector>
 #include <random>
+#include <algorithm>
 
 #include "CLI/CLI.hpp"
 #include "config.h"
@@ -40,7 +41,15 @@ auto main(int argc, char **argv) -> int {
         random_values.push_back(dis(gen));
     }
 
-    // Rufe die Funktion zur Ausgabe des Vektors auf
+    // Rufe die Funktion zur Ausgabe des ursprünglichen Vektors auf
+    fmt::print("Ursprünglicher Vektor: ");
+    print_vector(random_values);
+
+    // Sortiere den Vektor aufsteigend
+    std::sort(random_values.begin(), random_values.end());
+
+    // Rufe die Funktion zur Ausgabe des sortierten Vektors auf
+    fmt::print("Sortierter Vektor: ");
     print_vector(random_values);
 
     return 0;
