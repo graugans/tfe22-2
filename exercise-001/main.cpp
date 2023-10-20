@@ -5,7 +5,7 @@
 #include "config.h"
 #include "vector"
 #include "random"
-
+//.
 auto main(int argc, char **argv) -> int
 {
     /**
