@@ -12,10 +12,10 @@
 using std::cout;
 using std::endl;
 
-constexpr int MIN = 1;
-constexpr int MAX = 100;
 
-
+void printVector(const std::vector<int>& data) {
+    fmt::print("vector: [{}]\n", fmt::join(data, ", "));
+}
 
 auto main(int argc, char **argv) -> int
 {
@@ -62,7 +62,7 @@ auto main(int argc, char **argv) -> int
     std::vector<int> data;
 
     // Specify the number of random numbers you want in the vector
-    const int numRandomNumbers = 10;
+    const int numRandomNumbers = count;
 
     for (int i = 0; i < numRandomNumbers; ++i) {
         // Generate a random number and add it to the vector
@@ -70,10 +70,7 @@ auto main(int argc, char **argv) -> int
         data.push_back(randomNumber);
     }
 
-    // Print the generated random numbers
-    for (int number : data) {
-        std::cout << number << " ";
-    }
+    printVector(data);
     
 
 
