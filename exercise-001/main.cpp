@@ -4,6 +4,8 @@
 #include "CLI/CLI.hpp"
 #include "config.h"
 
+void print_vector(const std::vector<int>& vec);
+
 auto main(int argc, char **argv) -> int
 {
     auto count{20};
@@ -46,10 +48,15 @@ auto main(int argc, char **argv) -> int
         val = rand() % 100 + 1;
     }
 
-    for(auto & val : random_vector)         //checking random numbers
-    {
-        std::cout << val << std::endl;
-    }
+    print_vector(random_vector);
 
     return 0; /* exit gracefully*/
+}
+
+
+void print_vector(const std::vector<int>& vec) {
+    for(const int& val : vec) {
+        fmt::print("{} ", val);
+    }
+    std::cout << '\n';
 }
