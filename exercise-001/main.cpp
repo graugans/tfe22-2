@@ -10,6 +10,9 @@ auto main(int argc, char **argv) -> int
      * CLI11 is a command line parser to add command line options
      * More info at https://github.com/CLIUtils/CLI11#usage
      */
+
+    auto start = std::chrono::system_clock::now();
+    
     CLI::App app{PROJECT_NAME};
 
     auto count {20};
@@ -51,6 +54,10 @@ auto main(int argc, char **argv) -> int
     for (int n : vector)
         fmt::print("{}, ", n);
     fmt::print("\n");
+
+    auto end = std::chrono::system_clock::now();
+    auto elapsed = end - start;
+    fmt::print("elapsed {}", elapsed);
 
     return 0; /* exit gracefully*/
 }
