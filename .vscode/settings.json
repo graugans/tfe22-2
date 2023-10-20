@@ -103,7 +103,14 @@
         "*.ipp": "cpp",
         "complex": "cpp",
         "armadillo": "cpp",
-        "shared_mutex": "cpp"
+        "shared_mutex": "cpp",
+        "any": "cpp",
+        "compare": "cpp",
+        "concepts": "cpp",
+        "numbers": "cpp",
+        "semaphore": "cpp",
+        "stop_token": "cpp",
+        "forward_list": "cpp"
     },
     "cSpell.language": "en,en-GB",
     "cSpell.words": [
