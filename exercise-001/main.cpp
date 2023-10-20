@@ -61,5 +61,14 @@ auto main(int argc, char **argv) -> int
     print_vector(counter_v);
     sort_vector(counter_v);
 
+    auto start = std::chrono::system_clock::now();
+
+    auto end = std::chrono::system_clock::now();
+
+    auto elapsed =
+    std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
+
+    fmt::print("{}", elapsed);
+
     return 0; /* exit gracefully*/
 }
