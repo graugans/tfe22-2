@@ -10,6 +10,12 @@ include_directories("${CMAKE_CURRENT_BINARY_DIR}/include") # add the output path
 # add the executable
 add_executable(${PROJECT_NAME} main.cpp)
 
+# Include dependencies
+#find_package(fmt REQUIRED)
+#find_package(nlohmann_json REQUIRED)
+#find_package(CLI11 CONFIG REQUIRED)
+#find_package(Catch2 3 REQUIRED)
+
 # Add libraries
 target_link_libraries(${PROJECT_NAME} PRIVATE
                                         fmt::fmt
