@@ -6,6 +6,16 @@
 #include "CLI/CLI.hpp"
 #include "config.h.in"
 
+// Funktion zur Ausgabe eines Vektors mit der {fmt} Bibliothek
+template <typename T>
+void printVector(const std::vector<T>& vec) {
+    fmt::print("Vektor:");
+    for (const T& value : vec) {
+        fmt::print(" {}", value);
+    }
+    fmt::print("\n");
+}
+
 auto main(int argc, char **argv) -> int
 {
     CLI::App app{PROJECT_NAME};
@@ -37,12 +47,8 @@ auto main(int argc, char **argv) -> int
     fmt::print("Hello, {}!\n", app.get_name());
     fmt::print("count: {}\n", count);
 
-    // Ausgabe der zufälligen Werte
-    fmt::print("Zufällige Werte:");
-    for (int value : random_values) {
-        fmt::print(" {}", value);
-    }
-    fmt::print("\n");
+    // Rufen Sie die Funktion zur Ausgabe des Vektors auf
+    printVector(random_values);
 
     return 0; /* graceful exit */
 }
