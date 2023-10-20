@@ -39,9 +39,16 @@ auto main(int argc, char **argv) -> int
     std::vector<uint32_t> vec_random;
     for (int i = 0; i <= 20; i++)
         vec_random.push_back(rand() % 100 + 1); // Add a random number between 1 and 100
+    
+    auto start = std::chrono::system_clock::now();
     std::sort(vec_random.begin(), vec_random.end());
-    fmt::print("{}", fmt::join(vec_random, ", "));
-    /* INSERT YOUR CODE HERE */
+    auto end = std::chrono::system_clock::now();
+    auto elapsed =
+    std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
+
+
+    fmt::print("The values of the vector: {} \n", fmt::join(vec_random, ", "));
+    fmt::print("Time it took to sort the vector (in ms): {}", elapsed);
 
     return 0; /* exit gracefully*/
 }
