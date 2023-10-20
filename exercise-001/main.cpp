@@ -42,11 +42,16 @@ std::vector <int> vector;
         vector.push_back(rand()%100+1); 
     }
 
+
+    std::sort(vector.rbegin(), vector.rend());
+
     for (int m = 0; m < vector.size(); m++)
     {
         std::cout << vector[m] << std::endl;
     }
     
+
+ 
     
 
     /* INSERT YOUR CODE HERE */
