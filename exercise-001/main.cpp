@@ -42,7 +42,12 @@ auto main(int argc, char **argv) -> int
     std::generate_n(vec.begin(), count, [&dis, &gen]() { return dis(gen); });
     fmt::print("Unsorted vector:\n");
     print_vector(vec);
+    auto start = std::chrono::system_clock::now();
     std::sort(vec.begin(), vec.end());
+    auto end = std::chrono::system_clock::now();
+    auto elapsed = end - start;
+    auto elapsed_ms = std::chrono::duration_cast<std::chrono::nanoseconds>(elapsed);
+    fmt::print("Elapsed time: {}ns\n", elapsed_ms.count());
     fmt::print("Sorted vector:\n");
     print_vector(vec);
     return 0; /* exit gracefully*/
