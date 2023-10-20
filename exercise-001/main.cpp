@@ -14,15 +14,15 @@ auto main(int argc, char **argv) -> int
     try
     {
         app.set_version_flag("-V,--version", fmt::format("{} {}", PROJECT_VER, PROJECT_BUILD_DATE));
+        int count = 20;
+        app.add_option("-c,--count", count, "A count integer");
         app.parse(argc, argv);
     }
     catch (const CLI::ParseError &e)
     {
         return app.exit(e);
     }
-
-    int count = 20;
-    app.add_option("-c,--count", count, "A count integer");
+   
 
     /**
      * The {fmt} lib is a cross platform library for printing and formatting text
