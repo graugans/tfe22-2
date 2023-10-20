@@ -3,6 +3,7 @@
 
 #include "CLI/CLI.hpp"
 #include "config.h"
+#include <random>
 
 
 
@@ -15,6 +16,17 @@ auto main(int argc, char **argv) -> int
     
     CLI::App app{PROJECT_NAME};
     int  count = 20;
+
+    std::vector<int> Zufall(count);
+
+    std::default_random_engine generator;
+    std::uniform_int_distribution<int> Zufallszahl(1,100);
+
+    for (std::vector<int>::size_type i = 0; i != Zufall.size(); ++i)
+    {
+        Zufall[i] = Zufallszahl(generator);
+    }
+
     try
     {
         app.set_version_flag("-V,--version", fmt::format("{} {}", PROJECT_VER, PROJECT_BUILD_DATE));
