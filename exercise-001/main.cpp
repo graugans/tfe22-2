@@ -3,6 +3,7 @@
 #include <vector>
 #include <random>
 #include <algorithm>
+#include <chrono>
 
 #include "CLI/CLI.hpp"
 #include "config.h"
@@ -45,12 +46,17 @@ auto main(int argc, char **argv) -> int {
     fmt::print("Ursprünglicher Vektor: ");
     print_vector(random_values);
 
-    // Sortiere den Vektor aufsteigend
+    auto start = std::chrono::system_clock::now();
+    
     std::sort(random_values.begin(), random_values.end());
 
-    // Rufe die Funktion zur Ausgabe des sortierten Vektors auf
+    auto end = std::chrono::system_clock::now();
+    auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
+
     fmt::print("Sortierter Vektor: ");
     print_vector(random_values);
+
+    fmt::print("Zeit zum Sortieren: {} Nanosekunden\n", elapsed.count());
 
     return 0;
 }
