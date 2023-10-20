@@ -27,6 +27,7 @@ auto main(int argc, char **argv) -> int
         return app.exit(e);
     }
 
+
     /**
      * The {fmt} lib is a cross platform library for printing and formatting text
      * it is much more convenient than std::cout and printf
@@ -35,7 +36,18 @@ auto main(int argc, char **argv) -> int
     fmt::print("Hello, {}!\n", app.get_name());
     fmt::print("value of count: {}!\n", count);
 
+std::vector <int> vector;
 
+    for (int i=0; i<count; ++i) {
+        vector.push_back(rand()%100+1); 
+    }
+
+    for (int m = 0; m < vector.size(); m++)
+    {
+        std::cout << vector[m] << std::endl;
+    }
+    
+    
 
     /* INSERT YOUR CODE HERE */
 
