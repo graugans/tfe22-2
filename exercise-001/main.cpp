@@ -58,11 +58,20 @@ for(int i=0; i<count; i++)
 }
 
 print_vector(zufallszahlen);
+fmt::print("\n");
+auto start = std::chrono::system_clock::now();
 std::sort(zufallszahlen.begin(), zufallszahlen.end());
+auto end = std::chrono::system_clock::now();
+auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
+fmt::print("Time: {}", elapsed);
 fmt::print("\n");
 print_vector(zufallszahlen);
 
-return 0; /* exit gracefully*/
+
+
+
+
+return 0; 
 }
 
 
