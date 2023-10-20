@@ -30,10 +30,15 @@ auto main(int argc, char **argv) -> int
             random_numbers.push_back(random);
             std::cout << "Random Number:" << random << "\n";
         }
-        sort(random_numbers.begin(), random_numbers.end());
-        fmt::print("Vektor: {}\n", fmt::join(random_numbers, " und "));
 
-        
+        auto start = std::chrono::system_clock::now();
+        sort(random_numbers.begin(), random_numbers.end());
+        auto end = std::chrono::system_clock::now();
+        auto elapsed =
+    std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
+        fmt::print("Vektor: {}\n", fmt::join(random_numbers, " und "));
+        fmt::print("Vergangene Zeit {}\n", elapsed);
+
         
         
     }
