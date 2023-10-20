@@ -51,8 +51,16 @@ auto main(int argc, char **argv) -> int
     std::cout << "count is: " << count << "\n";
     fmt::print("Hello, {}!\n", app.get_name());
 
+    auto start = std::chrono::system_clock::now();
+
     std::sort(rand_numbers.begin(), rand_numbers.end());
+
+    auto end = std::chrono::system_clock::now();   
+    // this constructs a duration object using milliseconds
+    auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
+
     print_vector(rand_numbers);
+    fmt::print("sorted in {}\n", elapsed);
 
     /* INSERT YOUR CODE HERE */
 
