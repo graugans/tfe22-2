@@ -11,6 +11,7 @@ void printVector(const std::vector<int>& Zufall) {
      {
         fmt::print("{}\n", value);
     }
+    
 }
 
 auto main(int argc, char **argv) -> int
@@ -60,5 +61,13 @@ auto main(int argc, char **argv) -> int
     fmt::print("Parameter, {}\n", count);
     //for(auto value: Zufall){}
     printVector(Zufall);
+
+    fmt::print("Sortierter Inhalt: ");
+    std::sort(Zufall.begin(), Zufall.end());
+    for(const auto &value : Zufall)
+     {
+        fmt::print("{}\n", value);
+    }
+
     return 0; /* exit gracefully*/
 }
