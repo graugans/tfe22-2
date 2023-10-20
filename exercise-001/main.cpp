@@ -30,6 +30,7 @@ auto main(int argc, char **argv) -> int
             random_numbers.push_back(random);
             std::cout << "Random Number:" << random << "\n";
         }
+        fmt::print("Vektor: {}\n", fmt::join(random_numbers, " und "));
 
         
         
@@ -48,6 +49,7 @@ auto main(int argc, char **argv) -> int
 
     fmt::print("Hello, {}!\n", app.get_name());
     std::cout << "Count: " << count << "\n";
+    
 
     return 0; /* exit gracefully*/
 }
