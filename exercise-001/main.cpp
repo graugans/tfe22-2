@@ -5,6 +5,8 @@
 #include "config.h"
 #include <vector>
 #include <random>
+#include <algorithm>  // Für std::sort
+#include <iostream>   // Für die Ausgabe
 
 auto main(int argc, char **argv) -> int
 {
@@ -36,6 +38,15 @@ auto main(int argc, char **argv) -> int
     }
 
     fmt::print("Zufällige Werte: ");
+    for (int value : randomValues) {
+        fmt::print("{} ", value);
+    }
+    fmt::print("\n");
+
+    // Sortieren Sie den Vector aufsteigend
+    std::sort(randomValues.begin(), randomValues.end());
+
+    fmt::print("Sortierte Werte: ");
     for (int value : randomValues) {
         fmt::print("{} ", value);
     }
