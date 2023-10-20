@@ -3,16 +3,12 @@
 
 #include "CLI/CLI.hpp"
 #include "config.h"
+#include <vector>
+#include <random>
 
 auto main(int argc, char **argv) -> int
 {
-    /**
-     * CLI11 is a command line parser to add command line options
-     * More info at https://github.com/CLIUtils/CLI11#usage
-     */
-
     int count = 20;
-
 
     CLI::App app{PROJECT_NAME};
     try
@@ -26,15 +22,24 @@ auto main(int argc, char **argv) -> int
         return app.exit(e);
     }
 
-    /**
-     * The {fmt} lib is a cross platform library for printing and formatting text
-     * it is much more convenient than std::cout and printf
-     * More info at https://fmt.dev/latest/api.html
-     */
     fmt::print("Hello, {}!\n", app.get_name());
-    fmt::print("count: {}\n, count", count);
+    fmt::print("count: {}\n", count);
 
-    /* INSERT YOUR CODE HERE */
+    // Erstellen Sie einen std::vector und füllen ihn mit zufälligen Werten
+    std::vector<int> randomValues;
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<int> dis(1, 100);
 
-    return 0; /* exit gracefully*/
+    for (int i = 0; i < count; ++i) {
+        randomValues.push_back(dis(gen));
+    }
+
+    fmt::print("Zufällige Werte: ");
+    for (int value : randomValues) {
+        fmt::print("{} ", value);
+    }
+    fmt::print("\n");
+
+    return 0;
 }
