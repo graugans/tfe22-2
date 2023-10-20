@@ -21,6 +21,9 @@ auto main(int argc, char **argv) -> int
         return app.exit(e);
     }
 
+    int count = 20;
+    app.add_option("-c,--count", count, "A count integer");
+
     /**
      * The {fmt} lib is a cross platform library for printing and formatting text
      * it is much more convenient than std::cout and printf
