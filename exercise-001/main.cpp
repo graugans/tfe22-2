@@ -40,8 +40,8 @@ auto main(int argc, char **argv) -> int
         //zufall_vector.push_back(rand()%100 +1);
     }
     vector_output(zufall_vector);
-
-
+    std::sort(zufall_vector.begin(), zufall_vector.end());
+    vector_output(zufall_vector);
 
     fmt::print("Hello, {}!\n", app.get_name());
 
