@@ -40,9 +40,13 @@ auto main(int argc, char **argv) -> int
      */
     fmt::print("Hello, {}!\n", app.get_name());
     printvector(numbers);
+    auto start = std::chrono::system_clock::now();
     std::sort(numbers.begin(), numbers.end());
+    auto end = std::chrono::system_clock::now();
+    auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
     fmt::print("\n");
     printvector(numbers);
+    fmt::print("sorting took {}", elapsed);
     /* INSERT YOUR CODE HERE */
 
     return 0; /* exit gracefully*/
