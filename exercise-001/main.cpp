@@ -41,5 +41,9 @@ auto main(int argc, char **argv) -> int
         vector.push_back(1 + std::rand() % 100);
     }
 
+    for (int n : vector)
+        fmt::print("{}, ", n);
+    fmt::print("\n");
+    
     return 0; /* exit gracefully*/
 }
