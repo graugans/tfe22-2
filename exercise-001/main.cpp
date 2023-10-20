@@ -51,9 +51,9 @@ auto main(int argc, char **argv) -> int
     // Zeitmessung beenden
     auto end = std::chrono::system_clock::now();
 
-    // Dauer der Sortierung berechnen und in Mikrosekunden ausgeben
-    auto elapsed = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
-    fmt::print("Sortierungsdauer: {} Mikrosekunden\n", elapsed.count());
+    // Dauer der Sortierung berechnen und in Nanosekunden ausgeben
+    auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
+    fmt::print("Sortierungsdauer: {} Nanosekunden\n", elapsed.count());
 
     fmt::print("Sortierte Werte: ");
     for (int value : randomValues) {
