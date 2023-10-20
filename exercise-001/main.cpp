@@ -7,6 +7,12 @@
 #include "vector"
 #include "time.h"
 
+auto print_vector(std::vector<int> &Zufallsvektor) -> void
+    {
+        for(auto value: Zufallsvektor){
+            fmt::print("{}\n", value);
+        }
+    }
 
 auto main(int argc, char **argv) -> int
 {
@@ -43,10 +49,7 @@ auto main(int argc, char **argv) -> int
     for(int i = 0; i < count; i++){
         Zufallsvektor.at(i) = (rand() % 100) + 1;
     }
-
-    for(auto value: Zufallsvektor){
-        fmt::print("{}\n", value);
-    }
+    print_vector(Zufallsvektor);
 
 
     return 0; /* exit gracefully*/
