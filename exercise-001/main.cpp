@@ -4,17 +4,24 @@
 #include "CLI/CLI.hpp"
 #include "config.h"
 
+
+
 auto main(int argc, char **argv) -> int
 {
     /**
      * CLI11 is a command line parser to add command line options
      * More info at https://github.com/CLIUtils/CLI11#usage
      */
+    
     CLI::App app{PROJECT_NAME};
+    int  count = 20;
     try
     {
         app.set_version_flag("-V,--version", fmt::format("{} {}", PROJECT_VER, PROJECT_BUILD_DATE));
+        app.add_option("-c,--count", count, "Zähler zum ändern");
         app.parse(argc, argv);
+        
+        
     }
     catch (const CLI::ParseError &e)
     {
@@ -27,8 +34,10 @@ auto main(int argc, char **argv) -> int
      * More info at https://fmt.dev/latest/api.html
      */
     fmt::print("Hello, {}!\n", app.get_name());
+   
 
-    /* INSERT YOUR CODE HERE */
+    CLI11_PARSE(app, argc, argv);
+    fmt::print("Parameter, {}\n", count);
 
     return 0; /* exit gracefully*/
 }
