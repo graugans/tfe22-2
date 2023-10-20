@@ -39,7 +39,7 @@ auto main(int argc, char **argv) -> int
     std::vector<uint32_t> vec_random;
     for (int i = 0; i <= 20; i++)
         vec_random.push_back(rand() % 100 + 1); // Add a random number between 1 and 100
-
+    std::sort(vec_random.begin(), vec_random.end());
     fmt::print("{}", fmt::join(vec_random, ", "));
     /* INSERT YOUR CODE HERE */
 
