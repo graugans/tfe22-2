@@ -7,6 +7,8 @@
 #include <vector>
 #include <time.h>
 
+auto print_vector(std::vector<int>) -> void;
+
 auto main(int argc, char **argv) -> int
 {
     /**
@@ -44,14 +46,17 @@ auto main(int argc, char **argv) -> int
     }
 
     fmt::print("Zufällig:\n");
-    for(auto value : Zufallsvektor) {
-        fmt::print("Value: {}\n", value);
-    }
+    print_vector(Zufallsvektor);
 
     std::sort(Zufallsvektor.begin(), Zufallsvektor.end());
     fmt::print("\nSortiert:\n");
-    for(auto value : Zufallsvektor) {
+    print_vector(Zufallsvektor);
+
+    return 0; /* exit gracefully*/
+}
+
+auto print_vector(std::vector<int> vec) -> void {
+    for(auto value : vec) {
         fmt::print("Value: {}\n", value);
     }
-    return 0; /* exit gracefully*/
 }
