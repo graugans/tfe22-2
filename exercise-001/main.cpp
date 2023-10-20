@@ -30,6 +30,7 @@ auto main(int argc, char **argv) -> int
             random_numbers.push_back(random);
             std::cout << "Random Number:" << random << "\n";
         }
+        sort(random_numbers.begin(), random_numbers.end());
         fmt::print("Vektor: {}\n", fmt::join(random_numbers, " und "));
 
         
