@@ -6,6 +6,8 @@
 #include "CLI/CLI.hpp"
 #include "config.h"
 
+void vector_output(std::vector<int>);
+
 auto main(int argc, char **argv) -> int
 {
     srand (time(NULL));
@@ -37,10 +39,7 @@ auto main(int argc, char **argv) -> int
         zufall_vector.at(i) = rand() % 100 +1;
         //zufall_vector.push_back(rand()%100 +1);
     }
-    for(auto value: zufall_vector)
-    {
-        fmt::print("Vectorvalue: {}\n",value);
-    }
+    vector_output(zufall_vector);
 
 
 
@@ -49,4 +48,14 @@ auto main(int argc, char **argv) -> int
     /* INSERT YOUR CODE HERE */
 
     return 0; /* exit gracefully*/
+}
+
+
+
+void vector_output(std::vector<int> neuer_vector)
+{
+    for(auto value: neuer_vector)
+    {
+        fmt::print("Vectorvalue: {}\n",value);
+    }
 }
