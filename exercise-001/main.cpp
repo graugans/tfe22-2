@@ -53,8 +53,12 @@ auto main(int argc, char **argv) -> int
 
     fmt::print("Geordnet:\n");
 
+    auto start = std::chrono::system_clock::now();
     std::sort(Zufallsvektor.begin(),Zufallsvektor.end());
-    print_vector(Zufallsvektor);
+    auto end = std::chrono::system_clock::now();
+    auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
 
+    print_vector(Zufallsvektor);
+    fmt::print("Time: {}\n", elapsed);
     return 0; /* exit gracefully*/
 }
