@@ -51,6 +51,7 @@ auto main(int argc, char **argv) -> int
     std::cout << "count is: " << count << "\n";
     fmt::print("Hello, {}!\n", app.get_name());
 
+    std::sort(rand_numbers.begin(), rand_numbers.end());
     print_vector(rand_numbers);
 
     /* INSERT YOUR CODE HERE */
