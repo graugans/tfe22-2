@@ -7,6 +7,7 @@
 #include <vector>   // Header-Datei für std::vector
 #include <random>   // Header-Datei für die Zufallsgenerierung
 #include <algorithm> // Header-Datei für std::sort
+#include <chrono> // Header-Datei für std::chrono
 
 // Funktion zur Ausgabe des Vektors mit zufälligen Zahlen
 void printRandomNumbers(const std::vector<int>& numbers) {
@@ -64,15 +65,26 @@ auto main(int argc, char **argv) -> int
     // Anzeigen der zufälligen Zahlen
     printRandomNumbers(randomNumbers);
 
-     // Sortieren Sie den Vektor in aufsteigender Reihenfolge
+    // Zeitmessung starten
+    auto start = std::chrono::system_clock::now();
+
+    // Sortieren des Vektors in aufsteigender Reihenfolge
     std::sort(randomNumbers.begin(), randomNumbers.end());
 
-    // Geben Sie den sortierten Vektor aus
+    // Zeitmessung beenden
+    auto end = std::chrono::system_clock::now();
+    auto elapsed = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+
+    // Ausgabe des sortierten Vektor
     fmt::print("Sortierte Zufallszahlen: ");
     for (int num : randomNumbers) {
         fmt::print("{} ", num);
     }
     fmt::print("\n");
+
+    // Ausgabe der Zeit, die für das Sortieren benötigt wurde
+    fmt::print("Zeit für das Sortieren: {} Mikrosekunden\n", elapsed.count());
+
 
     return 0; 
 }
