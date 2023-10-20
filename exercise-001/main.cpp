@@ -41,10 +41,10 @@ auto main(int argc, char **argv) -> int
         //zufall_vector.push_back(rand()%100 +1);
     }
     vector_output(zufall_vector);
-    auto start = std::chrono::system_clock::now();
+    const auto start = std::chrono::system_clock::now();
     std::sort(zufall_vector.begin(), zufall_vector.end());
-    auto end = std::chrono::system_clock::now();
-    auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
+    const auto end = std::chrono::system_clock::now();
+    const auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
     fmt::print("\n");
     fmt::print("Zeit: {}\n", elapsed);
     vector_output(zufall_vector);
