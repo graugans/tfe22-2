@@ -4,6 +4,7 @@
 #include "CLI/CLI.hpp"
 #include "config.h"
 #include <random>
+#include <algorithm> // Für std::sort
 
 auto main(int argc, char **argv) -> int
 {
@@ -44,6 +45,8 @@ auto main(int argc, char **argv) -> int
     for (int i = 0; i < count; ++i) {
         randomVector.push_back(dis(gen));
     }
+
+    std::sort(randomVector.begin(), randomVector.end());
 
     // Ausgabe der Werte im Vektor
     fmt::print("Random Vector: ");
