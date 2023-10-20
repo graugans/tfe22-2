@@ -8,6 +8,7 @@
 #include <iostream>
 #include <vector>
 #include <random>
+#include <algorithm>
 
 using std::cout;
 using std::endl;
@@ -72,23 +73,13 @@ auto main(int argc, char **argv) -> int
 
     printVector(data);
     
+    std::sort(data.begin(), data.end());
+
+    // Den sortierten Vektor ausgeben
+    fmt::print("Sortierter Vektor: [{}]\n", fmt::join(data, ", "));
 
 
 
-    
-   /*
-    app.add_option("-c,--count",count,fmt::format("Count: {}\n", count));
-    app.parse(argc, argv);
-
-    using vtype=std::variant<int, double, std::string>;
-    vtype v1;
-    //app.add_option<vtype,std:string>("--vs",v1);
-    app.add_option<vtype,int>("--count",count);
-    //app.add_option<vtype,double>("--vf",v1);
-    fmt::print("Count: %d\n", count);
-*/
-
-    /* INSERT YOUR CODE HERE */
 
     return 0; /* exit gracefully*/
 }
