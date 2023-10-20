@@ -5,14 +5,16 @@
 #include "config.h"
 #include <random>
 #include <algorithm> // Für std::sort
+#include <chrono> // Für Zeitmessung
 
 auto main(int argc, char **argv) -> int
 {
-    /**
-     * CLI11 is a command line parser to add command line options
+    CLI::App app{PROJECT_NAME};
+    
+     /* CLI11 is a command line parser to add command line options
      * More info at https://github.com/CLIUtils/CLI11#usage
      */
-    CLI::App app{PROJECT_NAME};
+    
 
     auto count = 20; // Standardwert
    
@@ -46,14 +48,23 @@ auto main(int argc, char **argv) -> int
         randomVector.push_back(dis(gen));
     }
 
+    auto start = std::chrono::system_clock::now();
+
     std::sort(randomVector.begin(), randomVector.end());
 
+    auto end = std::chrono::system_clock::now();
+    auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
+    
     // Ausgabe der Werte im Vektor
     fmt::print("Random Vector: ");
     for (const auto &element : randomVector) {
         fmt::print("{} ", element);
     }
     fmt::print("\n");
+
+    fmt::print("Sortierzeit: {}\n", elapsed);
+
     
+
     return 0; /* exit gracefully*/
 }
