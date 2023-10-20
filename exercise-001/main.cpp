@@ -6,19 +6,25 @@
 #include "CLI/CLI.hpp"
 #include "config.h"
 
-auto main(int argc, char **argv) -> int
-{
+// Funktion zur Ausgabe eines Vektors mit {fmt}
+template <typename T>
+void print_vector(const std::vector<T>& vec) {
+    fmt::print("Vector Values: ");
+    for (const T& value : vec) {
+        fmt::print("{} ", value);
+    }
+    fmt::print("\n");
+}
+
+auto main(int argc, char **argv) -> int {
     CLI::App app{PROJECT_NAME};
     int count = 20;
 
-    try
-    {
+    try {
         app.set_version_flag("-V,--version", fmt::format("{} {}", PROJECT_VER, PROJECT_BUILD_DATE));
         app.add_option("-c,--count", count, "Anzahl festlegen")->check(CLI::Range(0, 100));
         app.parse(argc, argv);
-    }
-    catch (const CLI::ParseError &e)
-    {
+    } catch (const CLI::ParseError &e) {
         return app.exit(e);
     }
 
@@ -34,11 +40,8 @@ auto main(int argc, char **argv) -> int
         random_values.push_back(dis(gen));
     }
 
-    fmt::print("Random Values: ");
-    for (int value : random_values) {
-        fmt::print("{} ", value);
-    }
-    fmt::print("\n");
+    // Rufe die Funktion zur Ausgabe des Vektors auf
+    print_vector(random_values);
 
     return 0;
 }
