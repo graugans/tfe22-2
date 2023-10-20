@@ -40,6 +40,7 @@ auto main(int argc, char **argv) -> int
     for (int i = 0; i <= 20; i++)
         vec_random.push_back(rand() % 100 + 1); // Add a random number between 1 and 100
 
+    fmt::print("{}", fmt::join(vec_random, ", "));
     /* INSERT YOUR CODE HERE */
 
     return 0; /* exit gracefully*/
