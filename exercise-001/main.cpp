@@ -1,6 +1,7 @@
 #include <fmt/chrono.h>
 #include <fmt/format.h>
 
+#include <chrono>
 #include <time.h>  
 #include <vector>
 #include "CLI/CLI.hpp"
@@ -40,7 +41,12 @@ auto main(int argc, char **argv) -> int
         //zufall_vector.push_back(rand()%100 +1);
     }
     vector_output(zufall_vector);
+    auto start = std::chrono::system_clock::now();
     std::sort(zufall_vector.begin(), zufall_vector.end());
+    auto end = std::chrono::system_clock::now();
+    auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
+    fmt::print("\n");
+    fmt::print("Zeit: {}\n", elapsed);
     vector_output(zufall_vector);
 
     fmt::print("Hello, {}!\n", app.get_name());
