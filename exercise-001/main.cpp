@@ -8,6 +8,16 @@
 #include <random>
 #include <iostream>
 
+void print_vector(const std::vector<int>& counter_v)
+{
+    fmt::print("Vector: {}\n", fmt::join(counter_v, ", "));
+}
+
+void sort_vector(const std::vector<int>& counter_v)
+{
+    fmt::print("Sorted Vector: {}\n", fmt::join(counter_v, ", "));
+}
+
 auto main(int argc, char **argv) -> int
 {
     /**
@@ -37,17 +47,19 @@ auto main(int argc, char **argv) -> int
     fmt::print("Hello, {}!\n", app.get_name());
     fmt::print("count: {}\n", count);
 
-    std::vector<int> counter(count);
-    std::default_random_engine generator;
-    std::uniform_int_distribution<int> distribution(0,100);
+    srand(time(0));
 
-    int i = 0;
-    for(i = 0; i <= count; i++)
+    std::vector<int> counter_v(count);
+
+    for(auto & val : counter_v)
     {
-        counter.push_back(distribution(generator));
-    }
+        val = rand() % 100+ 1;
+    } 
 
-    /* INSERT YOUR CODE HERE */
+    std::sort(counter_v.begin(), counter_v.end());
+
+    print_vector(counter_v);
+    sort_vector(counter_v);
 
     return 0; /* exit gracefully*/
 }
