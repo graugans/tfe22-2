@@ -4,6 +4,10 @@
 #include "CLI/CLI.hpp"
 #include "config.h"
 
+#include "vector"
+#include "time.h"
+
+
 auto main(int argc, char **argv) -> int
 {
     /**
@@ -12,6 +16,7 @@ auto main(int argc, char **argv) -> int
      */
     CLI::App app{PROJECT_NAME};
     int count = 20;
+    srand(time(NULL));
 
     try
     {
@@ -33,6 +38,16 @@ auto main(int argc, char **argv) -> int
     fmt::print("Counter: {}\n", count);
 
     /* INSERT YOUR CODE HERE */
+    std::vector <int> Zufallsvektor(count);
+
+    for(int i = 0; i < count; i++){
+        Zufallsvektor.at(i) = (rand() % 100) + 1;
+    }
+
+    for(auto value: Zufallsvektor){
+        fmt::print("{}\n", value);
+    }
+
 
     return 0; /* exit gracefully*/
 }
