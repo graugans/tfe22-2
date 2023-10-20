@@ -51,6 +51,10 @@ auto main(int argc, char **argv) -> int
     }
     print_vector(Zufallsvektor);
 
+    fmt::print("Geordnet:\n");
+
+    std::sort(Zufallsvektor.begin(),Zufallsvektor.end());
+    print_vector(Zufallsvektor);
 
     return 0; /* exit gracefully*/
 }
