@@ -40,6 +40,9 @@ auto main(int argc, char **argv) -> int
      */
     fmt::print("Hello, {}!\n", app.get_name());
     printvector(numbers);
+    std::sort(numbers.begin(), numbers.end());
+    fmt::print("\n");
+    printvector(numbers);
     /* INSERT YOUR CODE HERE */
 
     return 0; /* exit gracefully*/
