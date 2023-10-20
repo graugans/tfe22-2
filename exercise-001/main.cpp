@@ -32,6 +32,19 @@ auto main(int argc, char **argv) -> int
     fmt::print("Hello, {}!\n", app.get_name());
     fmt::print("count: {}\n", count);
 
+    std::vector<int> marius;
+
+    for(int i=0;i<count; i++){
+
+        marius.push_back(rand()%100+1);
+    }
+
+    for(int x=0;x<marius.size(); x++){
+
+        std::cout << marius[x] << std::endl;
+    }
+
+
     /* INSERT YOUR CODE HERE */
 
     return 0; /* exit gracefully*/
