@@ -4,6 +4,8 @@
 #include "CLI/CLI.hpp"
 #include "config.h"
 
+int count = 20;
+
 auto main(int argc, char **argv) -> int
 {
     /**
@@ -14,6 +16,7 @@ auto main(int argc, char **argv) -> int
     try
     {
         app.set_version_flag("-V,--version", fmt::format("{} {}", PROJECT_VER, PROJECT_BUILD_DATE));
+        app.add_option("-c,--count",count,fmt::format("The amount of elements in our vector default: {}", count));
         app.parse(argc, argv);
     }
     catch (const CLI::ParseError &e)
@@ -27,6 +30,7 @@ auto main(int argc, char **argv) -> int
      * More info at https://fmt.dev/latest/api.html
      */
     fmt::print("Hello, {}!\n", app.get_name());
+    fmt::print("count: {}\n", count);
 
     /* INSERT YOUR CODE HERE */
 
