@@ -5,6 +5,14 @@
 #include "CLI/CLI.hpp"
 #include "config.h"
 
+void print_vector(const std::vector<int> &vec)
+{
+    for (int value : vec)
+    {
+        fmt::print("{} ", value);
+        fmt::print("\n");
+    }
+}
 auto main(int argc, char **argv) -> int
 {
     int count = 20;
@@ -32,10 +40,10 @@ auto main(int argc, char **argv) -> int
     std::mt19937 gen(rd());
     std::uniform_int_distribution<> dis(1, 100);
     std::generate_n(vec.begin(), count, [&dis, &gen]() { return dis(gen); });
-    fmt::print("Random numbers: {}\n", fmt::join(vec, ", "));
+    fmt::print("Unsorted vector:\n");
+    print_vector(vec);
     std::sort(vec.begin(), vec.end());
-    fmt::print("Sorted numbers: {}\n", fmt::join(vec, ", "));
+    fmt::print("Sorted vector:\n");
+    print_vector(vec);
     return 0; /* exit gracefully*/
 }
-
-
