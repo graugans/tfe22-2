@@ -3,6 +3,8 @@
 
 #include "CLI/CLI.hpp"
 #include "config.h"
+#include "vector"
+#include "random"
 
 auto main(int argc, char **argv) -> int
 {
@@ -23,6 +25,11 @@ auto main(int argc, char **argv) -> int
         return app.exit(e);
     }
    
+    std::vector<int> numbers;
+
+    for(int i = 0; i<count; i++){
+        numbers.push_back(rand() % 100);
+    }
 
     /**
      * The {fmt} lib is a cross platform library for printing and formatting text
