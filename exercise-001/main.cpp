@@ -6,6 +6,13 @@
 #include <vector>
 #include <cstdlib>
 #include <ctime>
+ void print_vector(std::vector<int> &zufallszahlen)
+{
+    for(int zahl : zufallszahlen)
+    {
+    fmt::print("{} ", zahl);
+    }
+}
 
 auto main(int argc, char **argv) -> int
 {
@@ -13,6 +20,7 @@ auto main(int argc, char **argv) -> int
      * CLI11 is a command line parser to add command line options
      * More info at https://github.com/CLIUtils/CLI11#usage
      */
+    
      int count = 20;
     CLI::App app{PROJECT_NAME};
     try
@@ -46,11 +54,11 @@ for(int i=0; i<count; i++)
     int zufallszahl= rand() % 100 +1;
     zufallszahlen.push_back(zufallszahl);
 }
-for(int zahl : zufallszahlen)
-{
-    fmt::print("{} ", zahl);
-}
+
+print_vector(zufallszahlen);
 
     return 0; /* exit gracefully*/
+
 }
+
 
