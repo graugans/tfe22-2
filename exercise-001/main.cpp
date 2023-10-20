@@ -6,6 +6,8 @@
 #include "vector"
 #include "random"
 
+auto printvector(std::vector<int>& numbers)->void;
+
 auto main(int argc, char **argv) -> int
 {
     /**
@@ -37,8 +39,13 @@ auto main(int argc, char **argv) -> int
      * More info at https://fmt.dev/latest/api.html
      */
     fmt::print("Hello, {}!\n", app.get_name());
-
+    printvector(numbers);
     /* INSERT YOUR CODE HERE */
 
     return 0; /* exit gracefully*/
+}
+auto printvector(std::vector<int>& numbers)-> void{
+    for(auto& i : numbers){
+        fmt::print("{}\n", i);
+    }
 }
