@@ -6,15 +6,14 @@
 
 auto main(int argc, char **argv) -> int
 {
-    /**
-     * CLI11 is a command line parser to add command line options
-     * More info at https://github.com/CLIUtils/CLI11#usage
-     */
+    int count = 20;
     CLI::App app{PROJECT_NAME};
     try
     {
         app.set_version_flag("-V,--version", fmt::format("{} {}", PROJECT_VER, PROJECT_BUILD_DATE));
+        app.add_option("-c,--count", count, "Set the count value");
         app.parse(argc, argv);
+        fmt::print("count: {}\n", count);
     }
     catch (const CLI::ParseError &e)
     {
@@ -27,8 +26,6 @@ auto main(int argc, char **argv) -> int
      * More info at https://fmt.dev/latest/api.html
      */
     fmt::print("Hello, {}!\n", app.get_name());
-
-    /* INSERT YOUR CODE HERE */
-
+    
     return 0; /* exit gracefully*/
 }
