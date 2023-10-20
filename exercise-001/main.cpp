@@ -4,6 +4,9 @@
 #include "CLI/CLI.hpp"
 #include "config.h"
 
+#include <vector>
+#include <cstdlib>
+
 auto main(int argc, char **argv) -> int
 {
     int32_t count = 20;
@@ -17,6 +20,14 @@ auto main(int argc, char **argv) -> int
         app.set_version_flag("-V,--version", fmt::format("{} {}", PROJECT_VER, PROJECT_BUILD_DATE));
         app.add_option<int32_t>("-c, --count", count);
         app.parse(argc, argv);
+
+        std::vector<int32_t> rand_numbers;
+        srand((unsigned) time(NULL));
+
+        for (int32_t i = 0; i < count; i++)
+        {
+            rand_numbers.push_back(1 + (rand() % 100));
+        }
     }
     catch (const CLI::ParseError &e)
     {
