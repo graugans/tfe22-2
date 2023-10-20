@@ -6,6 +6,7 @@
 
 auto main(int argc, char **argv) -> int
 {
+    int32_t count = 20;
     /**
      * CLI11 is a command line parser to add command line options
      * More info at https://github.com/CLIUtils/CLI11#usage
@@ -14,6 +15,7 @@ auto main(int argc, char **argv) -> int
     try
     {
         app.set_version_flag("-V,--version", fmt::format("{} {}", PROJECT_VER, PROJECT_BUILD_DATE));
+        app.add_option<int32_t>("-c, --count", count);
         app.parse(argc, argv);
     }
     catch (const CLI::ParseError &e)
