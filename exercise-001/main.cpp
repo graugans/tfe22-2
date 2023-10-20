@@ -36,14 +36,21 @@ auto main(int argc, char **argv) -> int
 
     std::vector<int> vector;
 
+    srand(time(NULL));
     for (int i = 0; i < count; i++)
     {
-        vector.push_back(1 + std::rand() % 100);
+        vector.push_back(1 + rand() % 100);
     }
 
     for (int n : vector)
         fmt::print("{}, ", n);
     fmt::print("\n");
-    
+
+    std::sort(vector.begin(), vector.end());
+
+    for (int n : vector)
+        fmt::print("{}, ", n);
+    fmt::print("\n");
+
     return 0; /* exit gracefully*/
 }
