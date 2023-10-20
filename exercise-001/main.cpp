@@ -4,6 +4,10 @@
 #include "CLI/CLI.hpp"
 #include "config.h.in"
 
+#include <vector>
+#include <random>
+#include <iostream>
+
 auto main(int argc, char **argv) -> int
 {
     /**
@@ -32,6 +36,16 @@ auto main(int argc, char **argv) -> int
      */
     fmt::print("Hello, {}!\n", app.get_name());
     fmt::print("count: {}\n", count);
+
+    std::vector<int> counter(count);
+    std::default_random_engine generator;
+    std::uniform_int_distribution<int> distribution(0,100);
+
+    int i = 0;
+    for(i = 0; i <= count; i++)
+    {
+        counter.push_back(distribution(generator));
+    }
 
     /* INSERT YOUR CODE HERE */
 
