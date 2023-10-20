@@ -3,6 +3,9 @@
 
 #include "CLI/CLI.hpp"
 #include "config.h"
+#include <vector>
+#include <cstdlib>
+#include <ctime>
 
 auto main(int argc, char **argv) -> int
 {
@@ -16,7 +19,7 @@ auto main(int argc, char **argv) -> int
     {
         app.set_version_flag("-V,--version", fmt::format("{} {}", PROJECT_VER, PROJECT_BUILD_DATE));
         app.parse(argc, argv);
-        app.add_option("-c,--count",count,"Anzahl festlegen")->check(CLI::Range(0,100));
+        app.add_option("-c,--count",count,"Anzahl festlegen:")->check(CLI::Range(0,100));
     }
     catch (const CLI::ParseError &e)
     {
@@ -33,8 +36,21 @@ auto main(int argc, char **argv) -> int
 
     /* INSERT YOUR CODE HERE */
    
-    fmt::print("Wert: {}\n",count);
+fmt::print("Wert: {}\n",count);
 
+std::vector<int> zufallszahlen;
+srand(static_cast<unsigned>(time(nullptr)));
+
+for(int i=0; i<count; i++)
+{
+    int zufallszahl= rand() % 100 +1;
+    zufallszahlen.push_back(zufallszahl);
+}
+for(int zahl : zufallszahlen)
+{
+    fmt::print("{} ", zahl);
+}
 
     return 0; /* exit gracefully*/
 }
+
