@@ -9,6 +9,7 @@
 #include <vector>
 #include <random>
 #include <algorithm>
+#include <chrono>
 
 using std::cout;
 using std::endl;
@@ -72,11 +73,16 @@ auto main(int argc, char **argv) -> int
     }
 
     printVector(data);
-    
+    auto start = std::chrono::system_clock::now();
     std::sort(data.begin(), data.end());
-
+auto end = std::chrono::system_clock::now();
+auto elapsed =
+    std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
     // Den sortierten Vektor ausgeben
     fmt::print("Sortierter Vektor: [{}]\n", fmt::join(data, ", "));
+
+    fmt::print("Zeit: {}", elapsed);
+
 
 
 
