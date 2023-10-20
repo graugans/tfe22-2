@@ -14,6 +14,8 @@ auto main(int argc, char **argv) -> int
     try
     {
         app.set_version_flag("-V,--version", fmt::format("{} {}", PROJECT_VER, PROJECT_BUILD_DATE));
+        std::int8_t count = 20;
+        app.add_option("-c, --count", count, "default");
         app.parse(argc, argv);
     }
     catch (const CLI::ParseError &e)
@@ -27,6 +29,7 @@ auto main(int argc, char **argv) -> int
      * More info at https://fmt.dev/latest/api.html
      */
     fmt::print("Hello, {}!\n", app.get_name());
+    
 
     /* INSERT YOUR CODE HERE */
 
