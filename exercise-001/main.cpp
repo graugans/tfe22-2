@@ -37,7 +37,19 @@ auto main(int argc, char **argv) -> int
 
     /* INSERT YOUR CODE HERE */
 
+    srand(time(0));
 
+    std::vector<int> random_vector(count); 
+
+    for(auto & val : random_vector)         //filling vector with random values
+    {
+        val = rand() % 100 + 1;
+    }
+
+    for(auto & val : random_vector)         //checking random numbers
+    {
+        std::cout << val << std::endl;
+    }
 
     return 0; /* exit gracefully*/
 }
