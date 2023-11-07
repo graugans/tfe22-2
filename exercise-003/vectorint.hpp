@@ -5,9 +5,18 @@ class VectorInt {
 public:
     VectorInt(int size);
     ~VectorInt();
+
+    void at(int place);
+    void resize(int size);
+    void size();
+    void clear();
+    void push_back(int value);
+    void push_back_better(int value);
+    void print_vector();
 private:
     int m_size;
     int* mp_Data;
+    int m_capacity;
 };
 
 #endif
