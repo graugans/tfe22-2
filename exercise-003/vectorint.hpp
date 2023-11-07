@@ -6,9 +6,9 @@ public:
     VectorInt(int size);
     ~VectorInt();
 
-    void at(int place);
+    int& at(int place);
     void resize(int size);
-    void size();
+    int size();
     void clear();
     void push_back(int value);
     void push_back_better(int value);

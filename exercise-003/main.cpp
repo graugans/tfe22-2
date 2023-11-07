@@ -3,6 +3,8 @@
 
 #include "vectorint.hpp"
 
+#define NUMBER_OF_VAlUES 2000
+
 auto main(int argc, char **argv) -> int
 {
     /**
@@ -10,7 +12,7 @@ auto main(int argc, char **argv) -> int
      * it is much more convenient than std::cout and printf
      * More info at https://fmt.dev/latest/api.html
      */
-    fmt::print("Hello, World!\n");
+    //fmt::print("Hello, World!\n");
 
     /* INSERT YOUR CODE HERE */
     
@@ -23,8 +25,10 @@ auto main(int argc, char **argv) -> int
     data.push_back(14);
     data.print_vector();
 
-    fmt::print("Value at:       ");
-    data.at(20);
+    fmt::print("Value at:       {}\n", data.at(20));
+
+    fmt::print("Size of Vector: {}\n", data.size());
+    
 
     fmt::print("resize:         ");
     data.resize(10);
@@ -36,7 +40,7 @@ auto main(int argc, char **argv) -> int
 
     
     auto start = std::chrono::system_clock::now();
-    for(int i = 0; i<100; i++)
+    for(int i = 0; i<NUMBER_OF_VAlUES; i++)
     {
         data2.push_back(10);
     }
@@ -50,7 +54,7 @@ auto main(int argc, char **argv) -> int
 
     
     auto start1 = std::chrono::system_clock::now();
-    for(int i = 0; i<100; i++)
+    for(int i = 0; i<NUMBER_OF_VAlUES; i++)
     {
         data3.push_back_better(10);
     }

@@ -21,8 +21,19 @@ void VectorInt::resize(int size)
 {
     m_size = size;
     int* tmp = new int[size];
+    auto entries_to_copy = m_size;
+
+    if(size < m_size) entries_to_copy = size;
+    
+    for (int i = 0; i < entries_to_copy; i++)
+    {
+        tmp[i] = mp_Data [i];
+    }
+
     delete[]mp_Data;
     mp_Data = tmp;
+    tmp = nullptr;
+    m_size = size;
 }
 
 void VectorInt::push_back(int value)
@@ -47,14 +58,15 @@ void VectorInt::print_vector()
     std::cout << std::endl;
 }
 
-void VectorInt::at(int place)
+int& VectorInt::at(int place)
 {
-    std::cout << mp_Data[place] << std::endl;
+    if(place < m_size) return mp_Data[place];
+    else NULL;
 }
 
-void VectorInt::size()
+int VectorInt::size()
 {
-    std::cout << m_size << std::endl;
+    return m_size;
 }
 
 void VectorInt::clear()
