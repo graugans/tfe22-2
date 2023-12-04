@@ -122,4 +122,5 @@
         "Struct",
         "Wilking"
     ],
+    "C_Cpp.default.compilerPath": "/usr/bin/clang++-16",
 }
